@@ -9,8 +9,9 @@ class Controller
 {
 	/** @var View */
 	public $view = null;
-	// defines the request
-	protected $request = null;
+
+	/** @var \Symfony\Component\HttpFoundation\Request */
+	protected $request;
 	// the current action
 	protected $action = null;
 	
@@ -22,7 +23,7 @@ class Controller
 	public function init()
 	{
 		$this->view = new View();
-		
+	    $this->request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
 		$this->view->settings->action = $this->action;
 		$this->view->settings->controller = strtolower(str_replace('Controller', '', get_class($this)));
 	}

@@ -4,7 +4,8 @@
     "license": "1.0.0",
     "require": {
         "vlucas/phpdotenv": "^3.3",
-        "symfony/http-foundation": "^4.2"
+        "symfony/http-foundation": "^4.2",
+        "symfony/yaml": "^4.2"
     },
     "autoload": {
         "files": [],
