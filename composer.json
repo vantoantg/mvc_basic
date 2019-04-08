@@ -1,0 +1,23 @@
+{
+    "name": "hp570/mvc_basic",
+    "description": "Short link",
+    "authors": [
+        {
+            "name": "tona-lc",
+            "email": "nvtoan@lockon-vn.com"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "^4.2",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "autoload": {
+        "files": ["app/Application.php", "config/functions.php"],
+        "psr-4": {
+          "config\\": "config",
+          "app\\controllers\\": "app/controllers",
+          "app\\models\\": "app/models",
+          "lib\\base\\": "lib/base"
+        }
+    }
+}
