@@ -1,7 +1,7 @@
 <?php
 namespace app\controllers;
 
-use config\Database;
+use config\DB;
 
 /**
  * Class TestController
@@ -11,7 +11,7 @@ class TestController extends ApplicationController
 {
 	public function indexAction()
 	{
-	    $db = new Database();
+	    $db = new DB();
 	}
 	
 	public function checkAction()

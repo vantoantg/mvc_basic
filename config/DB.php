@@ -8,7 +8,7 @@
 
 namespace config;
 
-class Database
+class DB
 {
     /** @var \PDO */
     public $connection;
