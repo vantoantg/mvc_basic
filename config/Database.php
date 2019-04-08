@@ -5,21 +5,20 @@
  * Date: 4/8/2019
  * Time: 10:26 AM
  */
+
 namespace config;
 
 class Database
 {
-    /**
-     * @var \mysqli
-     */
+    /** @var \PDO */
     public $connection;
 
+    /** @var \mysqli_result */
     public $result;
 
-    private $host;
+    private $dns;
     private $username;
     private $password;
-    private $db_name;
 
     /**
      * Loads DB config file and sets $this->db property
@@ -29,16 +28,18 @@ class Database
      */
     public function __construct()
     {
-        $this->host = getenv("DB_HOST");
+        $this->dns = getenv("DB_DNS");
         $this->username = getenv("DB_USER");
         $this->password = getenv("DB_PASSWORD");
-        $this->db_name = getenv("DB_NAME");
+
         $this->connectToDb();
     }
 
     public function __destruct()
     {
-        $this->connection->close();
+        if ($this->connection) {
+            $this->connection = null;
+        }
     }
 
     /**
@@ -46,18 +47,19 @@ class Database
      */
     private function connectToDb()
     {
-        $this->connection = new \PDO($this->host, $this->username, $this->password, $this->db_name);
-
-        if ($this->connection->connect_error) {
-            return "can not connect to database " . $this->connection->connect_error;
+        try {
+            $this->connection = new \PDO($this->dns, $this->username, $this->password);
+            // set the PDO error mode to exception
+            $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+            die;
         }
-
-        $this->connection->set_charset(getenv("DB_CHARSET"));
     }
 
     /**
      * @param $query
-     * @return bool|mysqli_result
+     * @return bool|\mysqli_result
      */
     public function query($query)
     {

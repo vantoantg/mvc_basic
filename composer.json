@@ -1,0 +1,17 @@
+{
+    "name": "tona_nguyen/mvc_basic",
+    "description": "shortlink",
+    "license": "1.0.0",
+    "require": {
+        "vlucas/phpdotenv": "^3.3",
+        "symfony/http-foundation": "^4.2"
+    },
+    "autoload": {
+        "files": [],
+        "psr-4": {
+            "app\\": "app/",
+            "lib\\": "lib/",
+            "config\\": "config/"
+        }
+    }
+}
