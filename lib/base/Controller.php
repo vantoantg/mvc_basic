@@ -1,9 +1,9 @@
 <?php
 namespace lib\base;
+
 /**
- * The base controller of the CMS
- * @author jimmiw
- * @since 2012-06-26
+ * Class Controller
+ * @package lib\base
  */
 class Controller
 {

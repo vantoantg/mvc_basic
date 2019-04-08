@@ -3,9 +3,8 @@ namespace app\controllers;
 use lib\base\Controller;
 
 /**
- * A controller used for handling standard errors
- * @author jimmiw
- * @since 2012-06-27
+ * Class ErrorController
+ * @package app\controllers
  */
 class ErrorController extends Controller
 {

@@ -3,8 +3,8 @@ namespace app\controllers;
 use lib\base\Controller;
 
 /**
- * Base controller for the application.
- * Add general things in this controller.
+ * Class ApplicationController
+ * @package app\controllers
  */
 class ApplicationController extends Controller
 {

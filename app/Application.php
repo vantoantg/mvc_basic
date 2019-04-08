@@ -31,7 +31,7 @@ class Application
 			
 			// no route found, throw an exception to run the error controller
 			if (!$routeFound || $controller == null || $action == null) {
-				throw new \Exception('no route added for ' . $_SERVER['REQUEST_URI']);
+				throw new \Exception('Not found your request ' . $_SERVER['REQUEST_URI']);
 			}
 			else {
 				// executes the action on the controller

@@ -1,10 +1,9 @@
 <?php
 namespace lib\base;
+
 /**
- * A class for handling the view logic of the system
- *
- * @author jimmiw
- * @since 2012-06-27
+ * Class View
+ * @package lib\base
  */
 class View
 {

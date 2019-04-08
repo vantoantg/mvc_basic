@@ -1,11 +1,17 @@
 <?php
 namespace app\controllers;
 
+use config\Database;
+
+/**
+ * Class TestController
+ * @package app\controllers
+ */
 class TestController extends ApplicationController
 {
 	public function indexAction()
 	{
-		$this->view->message = "hello from test::index";
+	    $db = new Database();
 	}
 	
 	public function checkAction()

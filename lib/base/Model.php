@@ -1,9 +1,11 @@
 <?php
 namespace lib\base;
+
+use config\Database;
+
 /**
- * A base model for handling the database connections
- * @author jimmiw
- * @since 2012-07-02
+ * Class Model
+ * @package lib\base
  */
 class Model
 {
@@ -16,17 +18,7 @@ class Model
 		$settings = parse_ini_file(ROOT_PATH . '/config/settings.ini', true);
 		
 		// starts the connection to the database
-		$this->_dbh = new PDO(
-			sprintf(
-				"%s:host=%s;dbname=%s",
-				$settings['database']['driver'],
-				$settings['database']['host'],
-				$settings['database']['dbname']
-			),
-			$settings['database']['user'],
-			$settings['database']['password'],
-			array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
-		);
+		$this->_dbh = new Database();
 		
 		$this->init();
 	}
