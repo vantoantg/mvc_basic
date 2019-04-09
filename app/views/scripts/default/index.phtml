@@ -3,9 +3,8 @@
 ?>
 <header id="header">
     <div class="container">
-
-        <div id="logo" class="pull-left">
-            <a href="#hero"><img src="<?= $this->toUrl('web/Regna/img/logo.png'); ?>" alt="" title=""/></img></a>
+        <div id="logo" class="col-12">
+            <a href="#hero"><img src="<?= $this->toUrl('logo-ft.png'); ?>" style="max-width: 80px" alt="" title=""/></a>
         </div>
     </div>
 </header><!-- #header -->
@@ -21,7 +20,7 @@
             <form class="" action="" method="post">
                 <div class="row">
                     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
-                        <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="form-control w-100" id="url" placeholder="Please enter a long link and click generate"
+                        <textarea id="textarea" onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="form-control w-100" id="url" placeholder="Please enter a long link and click generate"
                                   name="original_url"><?= $this->settings->url; ?></textarea>
                         <div class="col-12 text-center pt-3 px-0">
                             <button type="submit" class="btn btn-success text-center w-100">Generate</button>
@@ -58,16 +57,10 @@
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong>Regna</strong>. All Rights Reserved
+            &copy; Copyright <strong>Jobs Vina</strong>. All Rights Reserved
         </div>
         <div class="credits">
-            <!--
-              All the links in the footer should remain intact.
-              You can delete the links only if you purchased the pro version.
-              Licensing information: https://bootstrapmade.com/license/
-              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
-            -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            Designed by <a href="http://jobsvina.com" target="_blank">Jobs Vina</a>
         </div>
     </div>
 </footer><!-- #footer -->
@@ -85,7 +78,11 @@
         o.style.height = (25+o.scrollHeight)+"px";
     }
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
+        var _textarea = $('#textarea');
+        if ($.trim(_textarea.val()) == '') {
+            _textarea.focus();
+        }
     });
 </script>

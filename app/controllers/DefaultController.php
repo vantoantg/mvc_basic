@@ -21,7 +21,10 @@ class DefaultController extends ApplicationController
                     $url = new Urls();
                     $check = $url->getCodeByUrl($original_url);
                     if (!$check){
-                        $url->saveData(['code' => $code, 'original_url' => $this->request->get('original_url')]);
+//                        $str = addslashes('twinkle loves "coding"');
+//                        echo($str);
+//                        die;
+                        $url->saveData($code, $this->request->get('original_url'));
                     }else{
                         $code = $check->code;
                     }

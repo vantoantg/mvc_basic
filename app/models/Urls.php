@@ -7,6 +7,8 @@
  */
 namespace app\models;
 
+use Carbon\Carbon;
+
 class Urls extends \lib\base\Model
 {
 
@@ -19,20 +21,38 @@ class Urls extends \lib\base\Model
         $this->_setTable('urls');
     }
 
-    public function saveData($data)
+    public function saveData($code, $original_url)
     {
-        return $this->save($data);
+        $created_at = Carbon::now()->format('Y-m-d H:i:s');
+        $stmt = $this->connection->prepare("INSERT INTO urls (code, original_url, created_at) VALUES(:code, :original_url, :created_at)");
+        $stmt->bindValue(':code', $code);
+        $stmt->bindValue(':original_url', $original_url);
+        $stmt->bindValue(':created_at', $created_at);
+        return $stmt->execute();
     }
 
+    /**
+     * @param $url
+     * @return mixed
+     */
     public function getCodeByUrl($url)
     {
-        $sql = "SELECT `code` FROM `urls` WHERE original_url = '".$url."'";
-        return $this->query($sql)->fetchObject();
+        $original_url = addslashes($url);
+        $sql = "SELECT `code` FROM `urls` WHERE original_url = '$original_url'";
+        $query = $this->connection->query($sql);
+
+        return $query->fetchObject();
     }
 
+    /**
+     * @param $code
+     * @return mixed
+     */
     public function getUrlByCode($code)
     {
-        $sql = "SELECT `original_url` FROM `urls` WHERE code = '".$code."'";
-        return $this->query($sql)->fetchObject();
+        $code = addslashes($code);
+        $sql = "SELECT `original_url` FROM `urls` WHERE code = '$code'";
+        $query = $this->connection->query($sql);
+        return $query->fetchObject();
     }
 }
