@@ -7,25 +7,20 @@ use config\DB;
  * Class Model
  * @package lib\base
  */
-class Model
+class Model extends DB
 {
-	protected $_dbh = null;
 	protected $_table = "";
-	
-	public function __construct()
-	{
-		// starts the connection to the database
-		$this->_dbh = new DB();
-		
-		$this->init();
-	}
-	
-	public function init()
-	{
-		
-	}
-	
-	/**
+
+    /**
+     * Model constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+
+    /**
 	 * Sets the database table the model is using
 	 * @param string $table the table the model is using
 	 */
@@ -39,10 +34,10 @@ class Model
 		$sql = 'select * from ' . $this->_table;
 		$sql .= ' where id = ?';
 		
-		$statement = $this->_dbh->prepare($sql);
+		$statement = $this->connection->prepare($sql);
 		$statement->execute(array($id));
 		
-		return $statement->fetch(PDO::FETCH_OBJ);
+		return $statement->fetch(\PDO::FETCH_OBJ);
 	}
 	
 	/**
@@ -76,7 +71,7 @@ class Model
 			
 			$sql .= ' where id = ?';// . $data['id'];
 			
-			$statement = $this->_dbh->prepare($sql);
+			$statement = $this->connection->prepare($sql);
 			return $statement->execute($values);
 		}
 		else {
@@ -99,9 +94,9 @@ class Model
 			
 			$sql .= ')';
 			
-			$statement = $this->_dbh->prepare($sql);
+			$statement = $this->connection->prepare($sql);
 			if ($statement->execute($values)) {
-				return $this->_dbh->lastInsertId();
+				return $this->connection->lastInsertId();
 			}
 		}
 		
@@ -115,7 +110,7 @@ class Model
 	 */
 	public function delete($id)
 	{
-		$statement = $this->_dbh->prepare("delete from " . $this->_table . " where id = ?");
+		$statement = $this->connection->prepare("delete from " . $this->_table . " where id = ?");
 		return $statement->execute(array($id));
 	}
 }

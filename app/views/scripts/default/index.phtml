@@ -1,0 +1,73 @@
+<?php
+/* @var $this \lib\base\View */
+?>
+<header id="header">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+            <a href="#hero"><img src="<?= $this->toUrl('web/Regna/img/logo.png'); ?>" alt="" title=""/></img></a>
+        </div>
+    </div>
+</header><!-- #header -->
+
+<!--==========================
+  Hero Section
+============================-->
+<section id="hero">
+    <div class="hero-container">
+        <h1>Welcome to Regna</h1>
+        <h2>Please enter the link to create the shortest link!</h2>
+        <div class="container">
+            <form class="" action="" method="post">
+                <div class="row">
+                    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
+                        <textarea class="form-control w-100" id="url" placeholder="Please enter a long link and click generate"
+                                  name="original_url"><?= $this->settings->url; ?></textarea>
+                        <div class="col-12 text-center pt-3 px-0">
+                            <button type="submit" class="btn btn-success text-center w-100">Generate</button>
+                        </div>
+
+                    </div>
+                </div>
+                <?php
+                if (isset($this->settings->code)){
+                ?>
+                <div class="row my-3 pt-4">
+                    <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
+                        <div class="row">
+                            <div class="col-8 text-right pr-0"><input readonly class="form-control" value="<?= $this->settings->code ?>"></div>
+                            <div class="col-4"><button type="submit" class="btn btn-danger text-center w-100">Copy</button></div>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+            </form>
+        </div>
+    </div>
+</section><!-- #hero -->
+
+<!--==========================
+  Footer
+============================-->
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong>Regna</strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
+            -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+</footer><!-- #footer -->
