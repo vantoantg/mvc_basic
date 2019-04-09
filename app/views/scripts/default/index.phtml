@@ -21,7 +21,7 @@
             <form class="" action="" method="post">
                 <div class="row">
                     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
-                        <textarea class="form-control w-100" id="url" placeholder="Please enter a long link and click generate"
+                        <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="form-control w-100" id="url" placeholder="Please enter a long link and click generate"
                                   name="original_url"><?= $this->settings->url; ?></textarea>
                         <div class="col-12 text-center pt-3 px-0">
                             <button type="submit" class="btn btn-success text-center w-100">Generate</button>
@@ -35,8 +35,8 @@
                 <div class="row my-3 pt-4">
                     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
                         <div class="row">
-                            <div class="col-8 text-right pr-0"><input readonly class="form-control" value="<?= $this->settings->code ?>"></div>
-                            <div class="col-4"><button type="submit" class="btn btn-danger text-center w-100">Copy</button></div>
+                            <div class="col-8 text-right pr-0"><input id="myInput" readonly class="form-control" value="<?= $this->settings->code ?>"></div>
+                            <div class="col-4"><button type="button" id="copy" class="btn btn-danger text-center w-100" data-toggle="tooltip" title="Copy to clipboard">Copy</button></div>
                         </div>
                     </div>
                 </div>
@@ -71,3 +71,21 @@
         </div>
     </div>
 </footer><!-- #footer -->
+
+<script>
+    $('#copy').on('click', function (e) {
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        document.execCommand("copy");
+        $('body').find('.tooltip .tooltip-inner').html('Text copied !')
+    });
+
+    function textAreaAdjust(o) {
+        o.style.height = "1px";
+        o.style.height = (25+o.scrollHeight)+"px";
+    }
+
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>

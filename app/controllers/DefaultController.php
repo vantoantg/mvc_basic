@@ -2,7 +2,6 @@
 namespace app\controllers;
 
 use app\models\Urls;
-use config\DB;
 use lib\base\Helper;
 
 /**
@@ -20,12 +19,12 @@ class DefaultController extends ApplicationController
                 if (filter_var($original_url, FILTER_VALIDATE_URL)) {
                     $code = Helper::getInstance()->generateRandomString(5);
                     $url = new Urls();
-                    $url->saveData(['code' => $code, 'original_url' => $this->request->get('original_url')]);
                     $check = $url->getCodeByUrl($original_url);
-                    echo '<pre>';
-                    print_r($check);
-                    echo '</pre>';
-                    die;
+                    if (!$check){
+                        $url->saveData(['code' => $code, 'original_url' => $this->request->get('original_url')]);
+                    }else{
+                        $code = $check->code;
+                    }
 
                     $this->view->settings->code = $code;
                     $this->view->settings->url = $original_url;

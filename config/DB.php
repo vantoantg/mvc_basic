@@ -59,7 +59,7 @@ class DB
 
     /**
      * @param $query
-     * @return bool|\mysqli_result
+     * @return false|\mysqli_result|\PDOStatement
      */
     public function query($query)
     {

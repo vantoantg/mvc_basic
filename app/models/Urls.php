@@ -27,6 +27,6 @@ class Urls extends \lib\base\Model
     public function getCodeByUrl($url)
     {
         $sql = "SELECT `code` FROM `urls` WHERE original_url = '".$url."'";
-        return $this->query($sql)->fetch_assoc();
+        return $this->query($sql)->fetchObject();
     }
 }
