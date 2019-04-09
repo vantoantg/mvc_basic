@@ -10,11 +10,11 @@ class Controller
 	/** @var View */
 	public $view = null;
 	// defines the request
-	protected $_request = null;
+	protected $request = null;
 	// the current action
-	protected $_action = null;
+	protected $action = null;
 	
-	protected $_namedParameters = array();
+	protected $namedParameters = array();
 	
 	/**
 	 * initializes various things in the controller
@@ -23,7 +23,7 @@ class Controller
 	{
 		$this->view = new View();
 		
-		$this->view->settings->action = $this->_action;
+		$this->view->settings->action = $this->action;
 		$this->view->settings->controller = strtolower(str_replace('Controller', '', get_class($this)));
 	}
 	
@@ -52,7 +52,7 @@ class Controller
 	public function execute($action = 'index')
 	{
 		// stores the current action
-		$this->_action = $action;
+		$this->action = $action;
 		
 		// initializes the controller
 		$this->init();
@@ -70,7 +70,7 @@ class Controller
 		$this->afterFilters();
 		
 		// renders the view
-		$this->view->render($this->_getViewScript($action));
+		$this->view->render($this->getViewScript($action));
 	}
 	
 	/**
@@ -78,7 +78,7 @@ class Controller
 	 * @param string $action
 	 * @return string the path to the view script
 	 */
-	protected function _getViewScript($action)
+	protected function getViewScript($action)
 	{
 		// fetches the current controller executed
 		$controller = get_class($this);
@@ -94,7 +94,7 @@ class Controller
 	 * this function when linking to things.
 	 * @return string the baseUrl for the application.
 	 */
-	protected function _baseUrl()
+	protected function baseUrl()
 	{
 		return WEB_ROOT;
 	}
@@ -106,11 +106,11 @@ class Controller
 	public function getRequest()
 	{
 		// initializes the request object
-		if ($this->_request == null) {
-			$this->_request = new Request();
+		if ($this->request == null) {
+			$this->request = new Request();
 		}
 		
-		return $this->_request;
+		return $this->request;
 	}
 	
 	/**
@@ -119,11 +119,11 @@ class Controller
 	 * @param mixed $default the default value, else null
 	 * @return mixed
 	 */
-	protected function _getParam($key, $default = null)
+	protected function getParam($key, $default = null)
 	{
 		// tests against the named parameters first
-		if (isset($this->_namedParameters[$key])) {
-			return $this->_namedParameters[$key];
+		if (isset($this->namedParameters[$key])) {
+			return $this->namedParameters[$key];
 		}
 		
 		// tests against the GET/POST parameters
@@ -134,13 +134,13 @@ class Controller
 	 * Fetches all the current parameters
 	 * @return array a list of all the parameters
 	 */
-	protected function _getAllParams()
+	protected function getAllParams()
 	{
-		return array_merge($this->getRequest()->getAllParams(), $this->_namedParameters);
+		return array_merge($this->getRequest()->getAllParams(), $this->namedParameters);
 	}
 	
 	public function addNamedParameter($key, $value)
 	{
-		$this->_namedParameters[$key] = $value;
+		$this->namedParameters[$key] = $value;
 	}
 }

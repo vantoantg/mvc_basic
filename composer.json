@@ -1,23 +1,17 @@
 {
-    "name": "hp570/mvc_basic",
-    "description": "Short link",
-    "authors": [
-        {
-            "name": "tona-lc",
-            "email": "nvtoan@lockon-vn.com"
-        }
-    ],
+    "name": "tona_nguyen/mvc_basic",
+    "description": "shortlink",
+    "license": "1.0.0",
     "require": {
-        "symfony/http-foundation": "^4.2",
-        "vlucas/phpdotenv": "^3.3"
+        "vlucas/phpdotenv": "^3.3",
+        "symfony/http-foundation": "^4.2"
     },
     "autoload": {
-        "files": ["app/Application.php", "config/functions.php"],
+        "files": [],
         "psr-4": {
-          "config\\": "config",
-          "app\\controllers\\": "app/controllers",
-          "app\\models\\": "app/models",
-          "lib\\base\\": "lib/base"
+            "app\\": "app/",
+            "lib\\": "lib/",
+            "config\\": "config/"
         }
     }
 }

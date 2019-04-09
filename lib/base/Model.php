@@ -1,7 +1,7 @@
 <?php
 namespace lib\base;
 
-use config\Database;
+use config\DB;
 
 /**
  * Class Model
@@ -14,11 +14,8 @@ class Model
 	
 	public function __construct()
 	{
-		// parses the settings file
-		$settings = parse_ini_file(ROOT_PATH . '/config/settings.ini', true);
-		
 		// starts the connection to the database
-		$this->_dbh = new Database();
+		$this->_dbh = new DB();
 		
 		$this->init();
 	}
