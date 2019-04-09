@@ -26,7 +26,7 @@ class DefaultController extends ApplicationController
                         $code = $check->code;
                     }
 
-                    $this->view->settings->code = $code;
+                    $this->view->settings->code = Helper::getInstance()->siteURL().'/'.$code;
                     $this->view->settings->url = $original_url;
                 }
             }
