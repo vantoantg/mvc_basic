@@ -12,4 +12,5 @@
 $routes = array(
 	'/' => 'default#index',
 	'/test' => 'test#index',
+    '/[a-zA-Z0-9_ -@.]' => 'default#index',
 );

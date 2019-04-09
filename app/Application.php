@@ -20,9 +20,9 @@ class Application
 			// the controller and action to execute
 			$controller = null;
 			$action = null;
-			
+
 			// tries to find a simple route
-			$routeFound = $this->_getSimpleRoute($routes, $controller, $action);
+			$routeFound = $this->getSimpleRoute($routes, $controller, $action);
 			
 			if (!$routeFound) {
 				// tries to find the a matching "parameter route"
@@ -60,7 +60,7 @@ class Application
 	 * Fetches the current URI called
 	 * @return string the URI called
 	 */
-	protected function _getUri()
+	public function getUri()
 	{
 		$uri = explode('?',$_SERVER['REQUEST_URI']);
 		$uri = $uri[0];
@@ -76,10 +76,10 @@ class Application
 	 * @param string $action the action to execute (sent as reference)
 	 * @return boolean
 	 */
-	protected function _getSimpleRoute($routes, &$controller, &$action)
+	protected function getSimpleRoute($routes, &$controller, &$action)
 	{
 		// fetches the URI
-		$uri = $this->_getUri();
+		$uri = $this->getUri();
 		
 		// if the route isn't defined, try to add a trailing slash
 		if (isset($routes[$uri])) {
@@ -102,7 +102,13 @@ class Application
 			$controller = $this->_initializeController($name);
 			
 			return true;
-		}
+		} else{
+            $action = 'index';
+            // initializes the redirect controller
+            $controller = $this->_initializeController('redirect');
+
+            return true;
+        }
 		
 		return false;
 	}
@@ -117,7 +123,7 @@ class Application
 	protected function _getParameterRoute($routes, &$controller, &$action)
 	{
 		// fetches the URI
-		$uri = $this->_getUri();
+		$uri = $this->getUri();
 		
 		// testing routes with parameters
 		foreach ($routes as $route => $path) {

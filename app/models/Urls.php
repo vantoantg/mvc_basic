@@ -29,4 +29,10 @@ class Urls extends \lib\base\Model
         $sql = "SELECT `code` FROM `urls` WHERE original_url = '".$url."'";
         return $this->query($sql)->fetchObject();
     }
+
+    public function getUrlByCode($code)
+    {
+        $sql = "SELECT `original_url` FROM `urls` WHERE code = '".$code."'";
+        return $this->query($sql)->fetchObject();
+    }
 }
