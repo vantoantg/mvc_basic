@@ -5,31 +5,29 @@
 	#logos .row > div a.img{ min-height: 80px; display: block;}
 	#logos .row > div a p{ font-size: 11px;}
 </style>
-<header id="header">
+<!--<header id="header">
     <div class="container">
         <div id="logo" class="col-12">
-            <a href="#hero"><img src="<?= $this->toUrl('logo-ft.png'); ?>" style="max-width: 80px" alt="" title=""/></a>
+            <a href="<?/*= \lib\base\Helper::getInstance()->siteURL(); */?>"><img src="<?/*= $this->toUrl('logo-ft.png'); */?>" style="max-width: 80px" alt="" title=""/></a>
         </div>
     </div>
-</header><!-- #header -->
-
-<!--==========================
-  Hero Section
-============================-->
+</header>-->
 <section id="hero">
     <div class="hero-container">
-        <h1 class="mt-0">Welcome to Regna</h1>
-        <h2>Please enter the link to create the shortest link!</h2>
+        <h1 class="mt-0">Chào mừng đến với Url Zip</h1>
+        <h2>Hãy nhập liên kết của bạn vào ô bên dưới để tạo liên kết ngắn gọn hơn!</h2>
         <div class="container mb-5">
             <form class="" action="" method="post">
                 <div class="row">
                     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
-                        <textarea id="textarea" onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="form-control w-100" id="url" placeholder="Please enter a long link and click generate"
+                        <textarea id="textarea" onkeyup="textAreaAdjust(this)"
+                                  style="overflow:hidden" class="form-control w-100"
+                                  id="url"
+                                  placeholder="Hãy nhập liên kết dài vào đây và nhấn [Tạo liên kết]"
                                   name="original_url"><?= $this->settings->url; ?></textarea>
                         <div class="col-12 text-center pt-3 px-0">
-                            <button type="submit" class="btn btn-success text-center w-100">Generate</button>
+                            <button type="submit" class="btn btn-success text-center w-100">Tạo liên kết</button>
                         </div>
-
                     </div>
                 </div>
                 <?php
@@ -39,7 +37,7 @@
                     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
                         <div class="row">
                             <div class="col-8 text-right pr-0"><input id="myInput" readonly class="form-control" value="<?= $this->settings->code ?>"></div>
-                            <div class="col-4"><button type="button" id="copy" class="btn btn-danger text-center w-100" data-toggle="tooltip" title="Copy to clipboard">Copy</button></div>
+                            <div class="col-4"><button type="button" id="copy" class="btn btn-danger text-center w-100" data-toggle="tooltip" title="Copy vào clipboard">Copy</button></div>
                         </div>
                     </div>
                 </div>
@@ -114,7 +112,7 @@
         var copyText = document.getElementById("myInput");
         copyText.select();
         document.execCommand("copy");
-        $('body').find('.tooltip .tooltip-inner').html('Text copied !')
+        $('body').find('.tooltip .tooltip-inner').html('Đã copy vào clipboard!')
     });
 
     function textAreaAdjust(o) {
