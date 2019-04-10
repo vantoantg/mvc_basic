@@ -1,6 +1,10 @@
 <?php
 /* @var $this \lib\base\View */
 ?>
+<style>
+	#logos .row > div a.img{ min-height: 80px; display: block;}
+	#logos .row > div a p{ font-size: 11px;}
+</style>
 <header id="header">
     <div class="container">
         <div id="logo" class="col-12">
@@ -14,9 +18,9 @@
 ============================-->
 <section id="hero">
     <div class="hero-container">
-        <h1>Welcome to Regna</h1>
+        <h1 class="mt-0">Welcome to Regna</h1>
         <h2>Please enter the link to create the shortest link!</h2>
-        <div class="container">
+        <div class="container mb-5">
             <form class="" action="" method="post">
                 <div class="row">
                     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
@@ -31,7 +35,7 @@
                 <?php
                 if (isset($this->settings->code)){
                 ?>
-                <div class="row my-3 pt-4">
+                <div class="row my-3 pt-4 mx-0">
                     <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 text-center">
                         <div class="row">
                             <div class="col-8 text-right pr-0"><input id="myInput" readonly class="form-control" value="<?= $this->settings->code ?>"></div>
@@ -42,6 +46,49 @@
                 <?php } ?>
             </form>
         </div>
+
+	    <div class="row mx-0 px-5 mt-md-4 mt-lg-5">
+		    <div id="logos" class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 px-0 mt-lg-5">
+			    <div class="row">
+				    <div class="col-6 col-sm-4 col-md-2 col-lg-2 mb-4">
+					    <a href="https://jobsvina.com" target="_blank" class="img">
+						    <img src="<?= $this->toUrl('logo-ft.png'); ?>" class="w-100" alt="Image" style="max-width:100%;">
+					    </a>
+					    <a href="https://jobsvina.com" target="_blank">
+					        <p class="pt-2 mb-0">Tìm kiếm việc làm miễn phí</p>
+					    </a>
+				    </div>
+				    <div class="col-6 col-sm-4 col-md-2 col-lg-2 mb-4">
+					    <a href="https://ec-cube.vn" target="_blank" class="img">
+						    <img src="<?= $this->toUrl('web/img/ec-cube.png'); ?>" class="w-100" alt="Image" style="max-width:100%;">
+					    </a>
+					    <a href="https://jobsvina.com" target="_blank">
+						    <p class="pt-2 mb-0">Mã nguồn mở website TMĐT</p>
+					    </a>
+				    </div>
+				    <div class="col-6 col-sm-4 col-md-2 col-lg-2 mb-4" data-placement="bottom" data-toggle="tooltip" title="Liên hệ đặt quảng cáo: Toàn - nguyennguyen.vt88@gmail.com">
+					    <a href="#" class="img">
+						    <img src="<?= $this->toUrl('web/img/logo.png'); ?>" class="w-100" alt="Image" style="max-width:100%;">
+					    </a>
+				    </div>
+				    <div class="col-6 col-sm-4 col-md-2 col-lg-2 mb-4">
+					    <a href="#">
+						    <img src="<?= $this->toUrl('web/img/logo.png'); ?>" class="w-100" alt="Image" style="max-width:100%;">
+					    </a>
+				    </div>
+				    <div class="col-6 col-sm-4 col-md-2 col-lg-2 mb-4">
+					    <a href="#">
+						    <img src="<?= $this->toUrl('web/img/logo.png'); ?>" class="w-100" alt="Image" style="max-width:100%;">
+					    </a>
+				    </div>
+				    <div class="col-6 col-sm-4 col-md-2 col-lg-2 mb-4">
+					    <a href="#">
+						    <img src="<?= $this->toUrl('web/img/logo.png'); ?>" class="w-100" alt="Image" style="max-width:100%;">
+					    </a>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
     </div>
 </section><!-- #hero -->
 
@@ -58,9 +105,6 @@
     <div class="container">
         <div class="copyright">
             &copy; Copyright <strong>Jobs Vina</strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            Designed by <a href="http://jobsvina.com" target="_blank">Jobs Vina</a>
         </div>
     </div>
 </footer><!-- #footer -->
