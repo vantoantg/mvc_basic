@@ -24,14 +24,11 @@ class RedirectController extends ApplicationController
             $check = $url->getUrlByCode($code);
             if ($check) {
                 header('Location: ' . $check->original_url);
+                die;
             } else {
                 header('Location: ' . Helper::getInstance()->siteURL());
+                die;
             }
         }
-    }
-
-    public function checkAction()
-    {
-        echo "hello from test::check";
     }
 }
