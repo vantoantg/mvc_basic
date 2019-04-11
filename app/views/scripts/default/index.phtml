@@ -5,13 +5,6 @@
 	#logos .row > div a.img{ min-height: 80px; display: block;}
 	#logos .row > div a p{ font-size: 11px;}
 </style>
-<!--<header id="header">
-    <div class="container">
-        <div id="logo" class="col-12">
-            <a href="<?/*= \lib\base\Helper::getInstance()->siteURL(); */?>"><img src="<?/*= $this->toUrl('logo-ft.png'); */?>" style="max-width: 80px" alt="" title=""/></a>
-        </div>
-    </div>
-</header>-->
 <section id="hero">
     <div class="hero-container">
         <h1 class="mt-0">Chào mừng đến với Url Zip</h1>
@@ -88,11 +81,7 @@
 		    </div>
 	    </div>
     </div>
-</section><!-- #hero -->
-
-<!--==========================
-  Footer
-============================-->
+</section>
 <footer id="footer">
     <div class="footer-top">
         <div class="container">
@@ -117,7 +106,7 @@
 
     function textAreaAdjust(o) {
         o.style.height = "1px";
-        o.style.height = (25+o.scrollHeight)+"px";
+        o.style.height = (25 + o.scrollHeight) + "px";
     }
 
     $(document).ready(function () {
